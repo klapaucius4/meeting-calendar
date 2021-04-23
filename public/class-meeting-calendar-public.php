@@ -168,7 +168,7 @@ class Meeting_Calendar_Public {
 						<script>
 						window.setInterval('refresh()', 2000); 	
 						function refresh() {
-							window .location.reload();
+							window.location = window.location.href;
 						}
 					</script>
 					<?php
