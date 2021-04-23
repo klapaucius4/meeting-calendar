@@ -26,13 +26,14 @@ class Meeting_Calendar_Database {
 	protected $datatable_name;
 
 	public function __construct($datatable_name) {
-		$this->datatable_name = $datatable_name;
+		global $wpdb;
+		$this->datatable_name = $wpdb->prefix."_".$datatable_name;
 
 	}
 	
 	public function get_all_rows(){
 		global $wpdb;
-		$posts = $wpdb->get_results("SELECT * FROM $wpdb->prefix.'_'.$wpdb->datatable_name WHERE post_status = 'publish'");
+		$posts = $wpdb->get_results("SELECT * FROM $this->datatable_name WHERE post_status = 'publish'");
 
 		return $posts;
 	}
