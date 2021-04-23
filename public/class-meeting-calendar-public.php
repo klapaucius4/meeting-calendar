@@ -176,7 +176,7 @@ class Meeting_Calendar_Public {
 
 		?>
 		<hr>
-		<form>
+		<form method="POST">
 		<div class="form-group">
 			<label ><?= __('Nazwa spotkania', 'mc') ?></label>
 			<input type="text" class="form-control" name="meeting_name" required>
