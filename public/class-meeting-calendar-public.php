@@ -109,7 +109,9 @@ class Meeting_Calendar_Public {
 
 	public function meeting_table_shortcode($atts, $content = null){
 		$db = new Meeting_Calendar_Database('imie_nazwisko');
-		$db->get_all_rows();
+		$elements = $db->get_all_rows();
+
+		var_dump($elements); exit;
 	}
 
 }
