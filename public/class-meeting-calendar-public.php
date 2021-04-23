@@ -144,7 +144,25 @@ class Meeting_Calendar_Public {
 
 
 	public function meeting_form_shortcode(){
-		echo 'formularz';
+		
+
+		?>
+		<form>
+		<div class="form-group">
+			<label ><?= __('Nazwa spotkania', 'mc') ?></label>
+			<input type="text" class="form-control" name="meeting_name" required>
+		</div>
+		<div class="form-group">
+			<label ><?= __('Osoba', 'mc') ?></label>
+			<input type="text" class="form-control" name="person" required>
+		</div>
+		<div class="form-group">
+			<label ><?= __('Data spotkania', 'mc') ?></label>
+			<input type="text" class="form-control" name="meeting_date" required>
+		</div>
+		<button type="submit" class="btn btn-primary"><?= __('Dodaj', 'mc'); ?></button>
+		</form>
+		<?php
 	}
 
 }
