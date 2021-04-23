@@ -108,7 +108,7 @@ class Meeting_Calendar_Public {
 
 
 	public function meeting_table_shortcode($atts, $content = null){
-		include(plugin_dir_url( __FILE__ ) . 'partials/meeting-calendar-public-table.php');
+		echo "trololo";
 	}
 
 }
