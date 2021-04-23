@@ -127,7 +127,7 @@ class Meeting_Calendar_Public {
 					<th scope="row"><?= $m->meeting_id ?></th>
 					<td><?= $m->meeting_name ?></td>
 					<td><?= $m->person ?></td>
-					<td><?= $m->date ?></td>
+					<td><?= $m->meeting_date ?></td>
 				</tr>
 				<?php endforeach; ?>
 			<?php else: ?>
