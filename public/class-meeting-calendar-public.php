@@ -47,10 +47,17 @@ class Meeting_Calendar_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
+
+
+
+	protected $db;
+
+
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->db = new Meeting_Calendar_Database('imie_nazwisko');
 
 	}
 
@@ -108,8 +115,7 @@ class Meeting_Calendar_Public {
 
 
 	public function meeting_table_shortcode($atts, $content = null){
-		$db = new Meeting_Calendar_Database('imie_nazwisko');
-		$meetings = $db->get_all_rows();
+		$meetings = $this->db->get_all_rows();
 		?>
 		<table class="table">
 			<thead class="thead-dark">
@@ -145,6 +151,17 @@ class Meeting_Calendar_Public {
 
 	public function meeting_form_shortcode(){
 		
+		if(isset($_POST['submit'])){
+			if($_POST['meeting_name'] && $_POST['person'] && $_POST['meeting_date']){
+				$this->db->insert_new_row(
+					array(
+						'meetin_name' => strip_tags($_POST['meetin_name']),
+						'person' => strip_tags($_POST['person']),
+						'meetin_date' => strip_tags($_POST['meetin_date'])
+					)
+				);
+			}
+		}
 
 		?>
 		<hr>
@@ -161,7 +178,7 @@ class Meeting_Calendar_Public {
 			<label ><?= __('Data spotkania', 'mc') ?></label>
 			<input type="text" class="form-control" name="meeting_date" required>
 		</div>
-		<button type="submit" class="btn btn-primary"><?= __('Dodaj', 'mc'); ?></button>
+		<button type="submit" name="submit" class="btn btn-primary"><?= __('Dodaj', 'mc'); ?></button>
 		</form>
 		<?php
 	}

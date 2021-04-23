@@ -37,4 +37,12 @@ class Meeting_Calendar_Database {
 		return $posts;
 	}
 
+	public function insert_new_row($data){
+		global $wpdb;
+		return $wpdb->insert($this->datatable_name, $data);
+	}
+
+
+
+
 }
