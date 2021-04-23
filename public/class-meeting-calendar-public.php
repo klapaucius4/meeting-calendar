@@ -142,4 +142,9 @@ class Meeting_Calendar_Public {
 		<?php
 	}
 
+
+	public function meeting_form_shortcode(){
+		echo 'formularz';
+	}
+
 }
