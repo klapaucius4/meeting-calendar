@@ -32,7 +32,7 @@ class Meeting_Calendar_Database {
 	
 	public function get_all_rows(){
 		global $wpdb;
-		$posts = $wpdb->get_results("SELECT * FROM $this->datatable_name WHERE post_status = 'publish'");
+		$posts = $wpdb->get_results("SELECT * FROM $this->datatable_name");
 
 		return $posts;
 	}
