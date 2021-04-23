@@ -162,6 +162,10 @@ class Meeting_Calendar_Public {
 				);
 
 				var_dump($add);
+			}else{
+				?>
+				<div class="alert alert-warning" role="alert"><?= __('Nie udało się dodać spotkania', 'mc') ?></div>
+				<?php
 			}
 		}
 
