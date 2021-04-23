@@ -23,17 +23,15 @@
  */
 class Meeting_Calendar_Database {
 
-	protected $wpdb;
 	protected $datatable_name;
 
 	public function __construct($datatable_name) {
-		global $wpdb;
-		$this->wpdb = $wpdp;
 		$this->datatable_name = $datatable_name;
 
 	}
 	
 	public function get_all_rows(){
+		global $wpdb;
 		$posts = $wpdb->get_results("SELECT ID, post_title FROM $wpdb->posts WHERE post_status = 'publish'
 		AND post_type='post' ORDER BY comment_count DESC LIMIT 0,4");
 
