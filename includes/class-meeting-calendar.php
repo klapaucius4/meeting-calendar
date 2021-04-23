@@ -105,6 +105,8 @@ class Meeting_Calendar {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-meeting-calendar-loader.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-meeting-calendar-database.php';
+
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
@@ -121,6 +123,8 @@ class Meeting_Calendar {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-meeting-calendar-public.php';
+
+		
 
 		$this->loader = new Meeting_Calendar_Loader();
 

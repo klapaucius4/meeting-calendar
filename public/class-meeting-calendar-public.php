@@ -47,10 +47,17 @@ class Meeting_Calendar_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
+
+
+
+	protected $db;
+
+
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->db = new Meeting_Calendar_Database('imie_nazwisko');
 
 	}
 
@@ -108,7 +115,90 @@ class Meeting_Calendar_Public {
 
 
 	public function meeting_table_shortcode($atts, $content = null){
-		include(plugin_dir_url( __FILE__ ) . 'partials/meeting-calendar-public-table.php');
+		$meetings = $this->db->get_all_rows();
+		?>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+				<th scope="col"><?= __('ID', 'mc') ?></th>
+				<th scope="col"><?= __('Nazwa spotkania', 'mc') ?></th>
+				<th scope="col"><?= __('Osoba', 'mc') ?></th>
+				<th scope="col"><?= __('Data', 'mc') ?></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php if(!empty($meetings)): ?>
+				<?php foreach($meetings as $m): ?>
+				<tr>
+					<th scope="row"><?= $m->meeting_id ?></th>
+					<td><?= $m->meeting_name ?></td>
+					<td><?= $m->person ?></td>
+					<td><?= $m->meeting_date ?></td>
+				</tr>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="4"><?= __('Tabela mysql jest pusta', 'mc') ?></td>
+				</tr>
+			<?php endif; ?>
+
+			</tbody>
+		</table>
+
+		<?php
+	}
+
+
+	public function meeting_form_shortcode(){
+		
+		if(isset($_POST['submit'])){
+			// var_dump($_POST); exit;
+			if($_POST['meeting_name'] && $_POST['person'] && $_POST['meeting_date']){
+				$add = $this->db->insert_new_row(
+					array(
+						'meeting_name' => strip_tags($_POST['meeting_name']),
+						'person' => strip_tags($_POST['person']),
+						'meeting_date' => strip_tags($_POST['meeting_date'])
+					)
+				);
+
+				if($add){
+					?>
+						<div class="alert alert-success" role="alert"><?= __('Dodano spotkanie', 'mc') ?></div>
+						<script>
+						window.setInterval('refresh()', 2000); 	
+						function refresh() {
+							window.location = window.location.href;
+						}
+					</script>
+					<?php
+				}
+			}else{
+				?>
+				<div class="alert alert-warning" role="alert"><?= __('Nie udało się dodać spotkania', 'mc') ?></div>
+				<?php
+			}
+		}
+
+		?>
+		<hr>
+		<h2 class="mt-5"><?= __('Dodaj spotkanie', 'mc'); ?></h2>
+		<form method="POST" class="mt-3">
+		<div class="form-group">
+			<label ><?= __('Nazwa spotkania', 'mc') ?></label>
+			<input type="text" class="form-control" name="meeting_name" required>
+		</div>
+		<div class="form-group">
+			<label ><?= __('Osoba', 'mc') ?></label>
+			<input type="text" class="form-control" name="person" required>
+		</div>
+		<div class="form-group">
+			<label ><?= __('Data spotkania', 'mc') ?></label>
+			<input type="text" class="form-control" name="meeting_date" required>
+		</div>
+		<input type="submit" name="submit" class="btn btn-primary" value="<?= __('Dodaj', 'mc'); ?>">
+		</form>
+		<?php
 	}
 
 }
