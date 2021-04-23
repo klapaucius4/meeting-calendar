@@ -182,7 +182,8 @@ class Meeting_Calendar_Public {
 
 		?>
 		<hr>
-		<form method="POST">
+		<h2 class="mt-5"><?= __('Dodaj spotkanie', 'mc'); ?></h2>
+		<form method="POST" class="mt-3">
 		<div class="form-group">
 			<label ><?= __('Nazwa spotkania', 'mc') ?></label>
 			<input type="text" class="form-control" name="meeting_name" required>
