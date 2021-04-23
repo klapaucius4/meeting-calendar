@@ -43,10 +43,10 @@ class Meeting_Calendar_Activator {
 		//* Create the teams table
 		$table_name = $wpdb->prefix . 'imie_nazwisko';
 		$sql = "CREATE TABLE $table_name (
-		meeting_id VARCHAR(255) NOT NULL AUTO_INCREMENT,
-		meeting_name VARCHAR(255) NOT NULL,
-		person VARCHAR(255) NOT NULL,
-		meeting_date VARCHAR(255) NOT NULL,
+		meeting_id VARCHAR NOT NULL AUTO_INCREMENT,
+		meeting_name VARCHAR NOT NULL,
+		person VARCHAR NOT NULL,
+		meeting_date VARCHAR NOT NULL,
 		PRIMARY KEY (meeting_id)
 		) $charset_collate;";
 		dbDelta( $sql );
