@@ -151,7 +151,7 @@ class Meeting_Calendar_Public {
 
 	public function meeting_form_shortcode(){
 		
-		if(isset($_POST['submit'])){
+		if(isset($_POST)){
 			if($_POST['meeting_name'] && $_POST['person'] && $_POST['meeting_date']){
 				$add = $this->db->insert_new_row(
 					array(
