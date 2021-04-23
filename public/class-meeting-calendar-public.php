@@ -156,9 +156,9 @@ class Meeting_Calendar_Public {
 			if($_POST['meeting_name'] && $_POST['person'] && $_POST['meeting_date']){
 				$add = $this->db->insert_new_row(
 					array(
-						'meetin_name' => strip_tags($_POST['meetin_name']),
+						'meeting_name' => strip_tags($_POST['meeting_name']),
 						'person' => strip_tags($_POST['person']),
-						'meetin_date' => strip_tags($_POST['meetin_date'])
+						'meeting_date' => strip_tags($_POST['meeting_date'])
 					)
 				);
 				var_dump($add); exit;
