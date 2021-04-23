@@ -161,7 +161,12 @@ class Meeting_Calendar_Public {
 					)
 				);
 
-				var_dump($add);
+				if($add){
+					?>
+						<div class="alert alert-success" role="alert"><?= __('Dodano spotkanie', 'mc') ?></div>
+
+					<?php
+				}
 			}else{
 				?>
 				<div class="alert alert-warning" role="alert"><?= __('Nie udało się dodać spotkania', 'mc') ?></div>
