@@ -147,6 +147,7 @@ class Meeting_Calendar_Public {
 		
 
 		?>
+		<hr>
 		<form>
 		<div class="form-group">
 			<label ><?= __('Nazwa spotkania', 'mc') ?></label>
