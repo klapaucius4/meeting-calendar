@@ -28,7 +28,7 @@ class Meeting_Calendar_Database {
 	public function __construct($datatable_name) {
 		global $wpdb;
 		$this->datatable_name = $wpdb->prefix."_".$datatable_name;
-
+		var_dump($this->datatable_name); exit;
 	}
 	
 	public function get_all_rows(){
