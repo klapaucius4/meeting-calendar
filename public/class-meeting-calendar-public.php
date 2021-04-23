@@ -114,10 +114,10 @@ class Meeting_Calendar_Public {
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-				<th scope="col">#</th>
-				<th scope="col">First</th>
-				<th scope="col">Last</th>
-				<th scope="col">Handle</th>
+				<th scope="col"><?= __('ID', 'mc') ?></th>
+				<th scope="col"><?= __('Nazwa spotkania', 'mc') ?></th>
+				<th scope="col"><?= __('Osoba', 'mc') ?></th>
+				<th scope="col"><?= __('Data', 'mc') ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -130,6 +130,10 @@ class Meeting_Calendar_Public {
 					<td><?= $m['date'] ?></td>
 				</tr>
 				<?php endforeach; ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="4"><?= __('Tabela mysql jest pusta', 'mc') ?></td>
+				</tr>
 			<?php endif; ?>
 
 			</tbody>
