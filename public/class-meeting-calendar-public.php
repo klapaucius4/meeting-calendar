@@ -124,10 +124,10 @@ class Meeting_Calendar_Public {
 			<?php if(!empty($meetings)): ?>
 				<?php foreach($meetings as $m): ?>
 				<tr>
-					<th scope="row"><?= $m['meeting_id'] ?></th>
-					<td><?= $m['meeting_name'] ?></td>
-					<td><?= $m['person'] ?></td>
-					<td><?= $m['date'] ?></td>
+					<th scope="row"><?= $m->meeting_id ?></th>
+					<td><?= $m->meeting_name ?></td>
+					<td><?= $m->person ?></td>
+					<td><?= $m->date ?></td>
 				</tr>
 				<?php endforeach; ?>
 			<?php else: ?>
