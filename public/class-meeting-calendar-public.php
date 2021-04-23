@@ -161,12 +161,16 @@ class Meeting_Calendar_Public {
 						'meeting_date' => strip_tags($_POST['meeting_date'])
 					)
 				);
-				var_dump($add); exit;
 
 				if($add){
 					?>
 						<div class="alert alert-success" role="alert"><?= __('Dodano spotkanie', 'mc') ?></div>
-
+						<script>
+						window.setInterval('refresh()', 2000); 	
+						function refresh() {
+							window .location.reload();
+						}
+					</script>
 					<?php
 				}
 			}else{
