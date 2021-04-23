@@ -109,9 +109,33 @@ class Meeting_Calendar_Public {
 
 	public function meeting_table_shortcode($atts, $content = null){
 		$db = new Meeting_Calendar_Database('imie_nazwisko');
-		$elements = $db->get_all_rows();
+		$meetings = $db->get_all_rows();
+		?>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+				<th scope="col">#</th>
+				<th scope="col">First</th>
+				<th scope="col">Last</th>
+				<th scope="col">Handle</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php if(!empty($meetings)): ?>
+				<?php foreach($meetings as $m): ?>
+				<tr>
+					<th scope="row"><?= $m['meeting_id'] ?></th>
+					<td><?= $m['meeting_name'] ?></td>
+					<td><?= $m['person'] ?></td>
+					<td><?= $m['date'] ?></td>
+				</tr>
+				<?php endforeach; ?>
+			<?php endif; ?>
 
-		var_dump($elements); exit;
+			</tbody>
+		</table>
+
+		<?php
 	}
 
 }
